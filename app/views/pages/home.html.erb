@@ -4,32 +4,16 @@
   <figcaption class="position-absolute text-white p-4">
     <h1 class="display-1">Rent your <span class="text-black">spaceship</span></h1>
     <p class="lead">Explore the galaxy like never before.</p>
-    <a href="#" class="btn btn-outline-light btn-lg">See all spaceships</a>
+    <%= link_to "See all spaceships", spaceships_path, class: "btn btn-outline-light btn-lg mt-4" %>
   </figcaption>
   <%# <h1 class="position-absolute text-white w-100 display-1 p-4">Rent your spaceship</h1> %>
 </figure>
 
 <h2 class="my-4">Latest Spaceships</h2>
 <div class="row">
-  <%# <% @spaceships.each do |spaceship| %>
-  <% 12.times do %>
-    <div class="col-md-3">
-      <div class="card mb-4 shadow-sm">
-        <%= image_tag "homepage/spaceship-card.jpg", class: "card-img-top" %>
-        <div class="card-body">
-          <h5 class="card-title text-success">
-            Falcon Millenium
-          </h5>
-          <p class="card-text">A short description</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <a class="btn btn-sm btn-outline-secondary">View</a>
-              <a class="btn btn-sm btn-outline-secondary">Rent</a>
-            </div>
-            <small class="text-muted">10€</small>
-          </div>
-        </div>
-      </div>
+  <% @spaceships.each do |spaceship| %>
+    <div class="col-12 col-md-6 col-lg-3">
+      <%= render "spaceships/spaceship", spaceship: spaceship %>
     </div>
   <% end %>
 </div>
