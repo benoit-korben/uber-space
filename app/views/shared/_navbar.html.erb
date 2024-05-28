@@ -1,0 +1,14 @@
+<nav class="navbar bg-dark border-bottom border-body px-3" data-bs-theme="dark">
+  <div class="container-fluid ">
+    <%= link_to "Uberspace", root_path, class: "navbar-brand w-25 p-0 m-0" %>
+    <nav class="w-75 justify-content-end">
+      <ul>
+        <li><%= link_to "Bookings", bookings_path %></a></li>
+        <li><%= link_to "Spaceships", spaceships_path %></a></li>
+      </ul>
+      <%= link_to dashboards_path do %>
+        <%= image_tag("navbar/profile.jpg", alt: "Profile Picture", class: "profile-picture") %>
+      <% end %>
+    </nav>
+  </div>
+</nav>
