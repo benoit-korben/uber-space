@@ -1,4 +1,7 @@
 <h1>Spaceships#index</h1>
 <p>Find me in app/views/spaceships/index.html.erb</p>
-
-<%= render "spaceship" %>
+<%= render "shared/navbar" %>
+<%= render "shared/hero-banner", text: "All spaceships", image_url: "app/assets/hero-banner.jpeg" %>
+<% @spaceships.each do |spaceship| %>
+<%= render "spaceship", spaceship: spaceship %>
+<% end %>
