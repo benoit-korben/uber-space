@@ -10,9 +10,9 @@ puts "creating users"
   User.new(name: Faker::Name.first_name, email: Faker::Internet.email, password: "azerty12345").save
 end
 
-file = URI.open("https://room.eu.com/images/contents/MuSpaceship.jpg")
 10.times do
-  spaceship = Spaceship.new(name: Faker::Lorem.paragraph_by_chars(number: 10),
+  file = URI.open("https://picsum.photos/300/200")
+  spaceship = Spaceship.new(name: Faker::Name.first_name,
   description: Faker::Lorem.paragraph_by_chars(number: 10),
   number_of_places: rand(0..100),
   price_per_day: rand(50..5000),
