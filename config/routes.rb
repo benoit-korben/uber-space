@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'dashboards/index'
+  get 'bookings/index'
+  get 'bookings/show'
+  get 'spaceships/index'
+  get 'spaceships/show'
   devise_for :users
   root "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -9,4 +14,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  resources :spaceships, only: [:index, :show] do
+    resources :bookings, only: [:new, :show, :create]
+  end
+  resources :bookings, only: [:index]
 end
