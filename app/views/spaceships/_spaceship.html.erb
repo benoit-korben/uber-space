@@ -1,13 +1,12 @@
 <div class="card" style="width: 18rem;">
-  <%# <img src="/images/vue-vaisseau-spatial-futuriste.jpg" class="card-img-top" alt="spaceship"> %>
   <%= image_tag('vue-vaisseau-spatial-futuriste.jpg', class: "card-img-top") %>
   <div class="card-body">
-    <h5 class="card-title">Spaceship de l'espace</h5>
-    <p class="card-text">Some incredible spaceship to travel around the universe with your BFF</p>
+    <h5 class="card-title"><%= spaceship.name %></h5>
+    <p class="card-text"><%= spaceship.description %></p>
     <div class="d-flex justify-content-between">
-      <h6><i class="fa-solid fa-radiation"></i> Uranium</h6>
-      <h6><i class="fa-solid fa-user-group"></i> 3</h6>
-      <h6><i class="fa-regular fa-gem"></i> 50$ / day</h6>
+      <h6><i class="fa-solid fa-radiation"></i> <%= spaceship.fuel %></h6>
+      <h6><i class="fa-solid fa-user-group"></i> <%= spaceship.number_of_places %></h6>
+      <h6><i class="fa-regular fa-gem"></i> <%= spaceship.price_per_day %>$ / day</h6>
     </div>
     <a href="#" class="btn btn-primary">Details</a>
   </div>
