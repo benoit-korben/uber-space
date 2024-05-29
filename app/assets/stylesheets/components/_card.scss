@@ -90,14 +90,48 @@ $transition-time: 1s;
     .price {
       font-weight: 200;
       position: absolute;
+      top: 30px;
+      right: 50px;
+      color: white;
+      transform-style: preserve-3d;
+      transition: ease all $transition-time;
+      z-index: 4;
+      font-size: 1.2em;
+      transform: translateZ(0px);
+    }
+
+    .places {
+      font-weight: 200;
+      position: absolute;
+      top: 80px;
+      right: 50px;
+      color: white;
+      transform-style: preserve-3d;
+      transition: ease all $transition-time;
+      z-index: 4;
+      font-size: 1.2em;
+      transform: translateZ(0px);
+
+      i {
+        font-size: 0.8em;
+      }
+    }
+
+    .fuel {
+      font-weight: 200;
+      position: absolute;
       top: 55px;
       right: 50px;
       color: white;
       transform-style: preserve-3d;
       transition: ease all $transition-time;
       z-index: 4;
-      font-size: 2em;
+      font-size: 1.2em;
       transform: translateZ(0px);
+
+      i {
+        font-size: 0.8em;
+      }
     }
   }
 
