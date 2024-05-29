@@ -1,156 +1,116 @@
 <%# Title %>
-<div class="d-flex justify-content-between align-items-end my-5">
+<div class="d-flex justify-content-between align-items-center my-5">
   <h1 class="m-0">Dashboard</h1>
-  <nav data-controller="dashboard-tabs">
+  <nav>
     <div class="nav" id="nav-tab" role="tablist">
-      <button class="nav-link active text-black p-0 underline" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" data-action="click->dashboard-tabs#toggle">Owner</button>
-      <button class="nav-link p-0" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" data-action="click->dashboard-tabs#toggle">Customer</button>
+      <button class="nav-link active text-black p-0 underline" id="nav-owner-tab" data-bs-toggle="tab" data-bs-target="#nav-owner" type="button" role="tab" aria-controls="nav-owner" aria-selected="true" >Owner</button>
+      <button class="nav-link p-0" id="nav-customer-tab" data-bs-toggle="tab" data-bs-target="#nav-customer" type="button" role="tab" aria-controls="nav-customer" aria-selected="false" >Customer</button>
     </div>
   </nav>
 </div>
-<%# Tabs %>
-<div class="container-fluid p-4 bookings-container">
-  <div class="row">
-    <div class="col">
-      <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-          <h2 class="my-4">My bookings</h2>
-          <div class="row my-4">
-
-
-<div class="container p-4 bg-light">
-    <h3 class="mb-3">Please check our more latest Design @ <a href="https://codepen.io/Gaurav-Rana-the-reactor">Codepen</a></h3>
-  <div class="accordion accordion-flush" id="accordionFlushExample">
-    <div class="accordion-item rounded-3 border-0 shadow mb-2">
-      <h2 class="accordion-header">
-        <button class="accordion-button border-bottom collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-          Pending bookings
-        </button>
-      </h2>
-      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
-
-
+<%# Tab content %>
+<div class="tab-content mt-4" id="nav-tabContent">
+  <div class="tab-pane fade active show" id="nav-owner" role="tabpanel" aria-labelledby="nav-owner">
+    <h2 class="my-4">My bookings</h2>
+    <div class="row">
+      <div class="accordion accordion-flush" id="accordionFlush">
+        <div class="accordion-item rounded-3 border-0 shadow mb-2">
+          <h3 class="accordion-header">
+            <button class="accordion-button border-bottom collapsed fw-semibold pending-bookings" type="button" data-bs-toggle="collapse" data-bs-target="#pending-bookings" aria-expanded="false" aria-controls="pending-bookings">
+              Pending bookings
+            </button>
+          </h3>
+          <div id="pending-bookings" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+            <%= render "shared/accordion", bookings:@pending_bookings %>
+          </div>
+        </div>
+      </div>
+      <div class="accordion accordion-flush" id="accordionFlush">
+        <div class="accordion-item rounded-3 border-0 shadow mb-2">
+          <h3 class="accordion-header">
+            <button class="accordion-button border-bottom collapsed fw-semibold confirmed-bookings" type="button" data-bs-toggle="collapse" data-bs-target="#confirmed-bookings" aria-expanded="false" aria-controls="confirmed-bookings">
+              Completed bookings
+            </button>
+          </h3>
+          <div id="confirmed-bookings" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+            <%= render "shared/accordion", bookings:@confirmed_bookings %>
+          </div>
+        </div>
+      </div>
+      <div class="accordion accordion-flush" id="accordionFlush">
+        <div class="accordion-item rounded-3 border-0 shadow mb-2">
+          <h3 class="accordion-header">
+            <button class="accordion-button border-bottom collapsed fw-semibold cancelled-bookings" type="button" data-bs-toggle="collapse" data-bs-target="#cancelled-bookings" aria-expanded="false" aria-controls="cancelled-bookings">
+              Cancelled bookings
+            </button>
+          </h3>
+          <div id="cancelled-bookings" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+            <%= render "shared/accordion", bookings:@cancelled_bookings %>
+          </div>
         </div>
       </div>
     </div>
-    <div class="accordion-item rounded-3 border-0 shadow mb-2">
-      <h2 class="accordion-header">
-        <button class="accordion-button border-bottom collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-          Confirmed Bookings
-        </button>
-      </h2>
-      <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
-
-
-        </div>
+    <div class="row">
+      <div class="d-flex justify-content-between align-items-center my-4">
+        <h2>My spaceships</h2>
+        <%= link_to "Add a spaceship", new_spaceship_path, class: "btn btn-success" %>
       </div>
-    </div>
-    <div class="accordion-item rounded-3 border-0 mb-2 shadow">
-      <h2 class="accordion-header">
-        <button class="accordion-button border-bottom collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-          Cancelled Bookings
-        </button>
-      </h2>
-      <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
-
-
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-            <% @bookings.each do |booking|  %>
-              <div class="card mb-3 col-6">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <%= cl_image_tag(booking.spaceship.photo.key, width: 200, heigth: 100)%>
-                  </div>
-                  <div class="col-md-8 p-3">
-                    <div class="card-body">
-                      <h2 class="card-title"><%= booking.spaceship.name %></h2>
-                      <h6 class="card-text">From: <%=booking.start_date %></h6>
-                      <h6 class="card-text">To: <%=booking.end_date %></h6>
-                      <h6 class="card-text"><%= booking.status.capitalize %></h6>
-                      <% booking.associated_buttons_status.each do |button| %>
-                        <%= link_to button[:text], dashboards_path, data: {turbo_method: :patch}, class: button[:classes] %>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
+      <% @spaceships.each do |spaceship| %>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card mb-4 shadow-sm">
+            <%= cl_image_tag spaceship.photo.key, class: "card-img-top" %>
+            <div class="card-body">
+              <h5 class="card-title text-success">
+                <%= spaceship.name %>
+              </h5>
+              <div class="d-flex justify-content-between mt-3">
+                <h6><i class="fa-solid fa-radiation"></i> <%= spaceship.fuel %></h6>
+                <h6><i class="fa-solid fa-user-group"></i> <%= spaceship.number_of_places %></h6>
+                <h6><i class="fa-regular fa-gem"></i> <%= spaceship.price_per_day %>$ / day</h6>
               </div>
-            <% end %>
+              <a href="#" class="btn btn-primary mt-4">View</a>
+            </div>
           </div>
-          <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2>My spaceships</h2>
-            <%= link_to "Add a spaceship", new_spaceship_path, class: "btn btn-success" %>
-          </div>
-          <div class="row">
-            <% @spaceships.each do |spaceship| %>
-              <div class="col-12 col-md-6 col-lg-4 mb-4">
-                <div class="card mb-4 shadow-sm">
-                  <%= cl_image_tag spaceship.photo.key, class: "card-img-top" %>
-                  <div class="card-body">
-                    <h5 class="card-title"><%= spaceship.name %></h5>
-                    <h5 class="card-title text-success">
-                      <%= spaceship.name %>
-                    </h5>
-                    <p class="card-text"><%= spaceship.description %></p>
-                    <div class="d-flex justify-content-between mt-3">
-                      <h6><i class="fa-solid fa-radiation"></i> <%= spaceship.fuel %></h6>
-                      <h6><i class="fa-solid fa-user-group"></i> <%= spaceship.number_of_places %></h6>
-                      <h6><i class="fa-regular fa-gem"></i> <%= spaceship.price_per_day %>$ / day</h6>
-                    </div>
-                    <a href="#" class="btn btn-primary mt-4">View</a>
-                  </div>
-                </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="nav-customer" role="tabpanel" aria-labelledby="nav-customer-tab">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>My current rentals</h2>
+      <%= link_to "Explore spaceships", spaceships_path, class: "btn btn-success" %>
+    </div>
+    <div class="row">
+      <% @rentals.each do |rental|  %>
+        <div class="card mb-3 col-6 <%= rental.status %>">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <%= cl_image_tag(rental.spaceship.photo.key, width: 200, heigth: 100)%>
+            </div>
+            <div class="col-md-8 p-3">
+              <div class="card-body">
+                <h2 class="card-title"><%= rental.spaceship.name %></h2>
+                <h6 class="card-text">From: <%=rental.start_date %></h6>
+                <h6 class="card-text">To: <%=rental.end_date %></h6>
+                <h6 class="card-text"><%= rental.status.capitalize %></h6>
+                <% rental.associated_buttons_status.each do |button| %>
+                  <%= link_to button[:text], dashboards_path, data: {turbo_method: :patch}, class: button[:classes] %>
+                <% end %>
               </div>
-            <% end %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
-</div>
-<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>My current rentals</h2>
-    <%= link_to "Explore spaceships", spaceships_path, class: "btn btn-success" %>
-  </div>
-  <div class="row">
-    <% @bookings.each do |booking| %>
-      <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <%# <h5 class="card-title"><%= booking.spaceship.name %></h5>
-          <%= cl_image_tag booking.spaceship.photo.key, class: "img-card-top" %>
-          <p class="card-text"><%= booking.spaceship.name %></p>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-</div>
-</div>
 </div>
 <style>
-  .card{
-  border-radius: 15px;
-  overflow: hidden;
-  img{
+  .card {
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  .card img {
     height: 250px;
     object-fit: cover;
-  }
   }
 </style>
