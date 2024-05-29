@@ -5,6 +5,7 @@
 
       <% if user_signed_in? %>
         <ul>
+          <li><%= link_to "Dashboard", dashboards_path %></a></li>
           <li><%= link_to "Spaceships", spaceships_path %></a></li>
         </ul>
         <div class="nav-item ms-4 dropdown">
