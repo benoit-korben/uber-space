@@ -24,7 +24,7 @@ photo = ["https://images.unsplash.com/photo-1601892782633-675465fa7f3a",
 10.times.each_with_index do |_, index|
   file = URI.open("#{photo[index]}")
   spaceship = Spaceship.new(name: Faker::Name.first_name,
-  description: Faker::Lorem.paragraph_by_chars(number: 10),
+  description: Faker::Lorem.paragraph_by_chars(number: 1500),
   number_of_places: rand(0..100),
   price_per_day: rand(50..5000),
   fuel: ["Uranium", "Plutonium", "tritium"].sample,
