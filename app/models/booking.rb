@@ -9,7 +9,4 @@ class Booking < ApplicationRecord
     cancelled: 3
   }
 
-  def update
-  end
-  
 end

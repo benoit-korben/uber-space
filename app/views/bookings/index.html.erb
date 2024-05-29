@@ -14,7 +14,8 @@
           <h6 class="card-text">From: <%=booking.start_date %></h6>
           <h6 class="card-text">To: <%=booking.end_date %></h6>
           <h6 class="card-text"><%= booking.status.capitalize %></h6>
-          <%= link_to "Confirm", process_data_your_path, class: "btn btn-primary", method: :post %>
+          <%# <%= link_to "Confirm", booking_path(booking), class: "btn btn-primary", method: :patch %>
+          <%= link_to "Confirm", booking_path(booking), data: {turbo_method: :patch, turbo_confirm: "Are you sure?"}, class: "btn btn-primary", value:"1" %>
           <button type="button" class="btn btn-success <%= booking.status == "pending" ? "" : "d-none"%>">Confirm</button>
           <button type="button" class="btn btn-danger <%= booking.status == "pending" ? "" : "d-none"%>">Refuse</button>
           <button type="button" class="btn btn-danger <%= booking.status == "booked" ? "" : "d-none"%>">Cancel</button>
