@@ -3,12 +3,12 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:update]
 
   def index
-    @bookings = Booking.all
+    @bookings = Booking.order(:status)
   end
 
   def update
-    raise
     @booking.update(booking_params)
+    redirect_to bookings_path
   end
 
   def new

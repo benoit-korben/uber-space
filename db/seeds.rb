@@ -27,7 +27,7 @@ end
 10.times do Booking.new(
   start_date: Faker::Date.between(from: 505.days.ago, to: Date.today),
   end_date: Faker::Date.between(from: Date.today, to: 1.year.from_now),
-  status: rand(0..3),
+  status: rand(0..4),
   spaceship_id: Spaceship.all.sample.id,
   user_id: User.all.sample.id
 ).save
