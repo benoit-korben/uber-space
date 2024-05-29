@@ -1,14 +1,12 @@
 <div class="us-card">
-	<div class="cover" style="background-image: url('<%= url_for(spaceship.photo) %>')">
-		<h1><%= spaceship.name %></h1>
-	  <span class="price"><%= spaceship.price_per_day %>€/day</span>
-		<span class="fuel"><%= spaceship.fuel %> <i class="fa-solid fa-circle-radiation"></i></span>
-	  <span class="places"><%= spaceship.number_of_places %> <i class="fas fa-users"></i></span>
-
-
-		<div class="card-back">
-			<%= link_to "Details", spaceship_path(spaceship), class: "btn btn-success mt-3" %>
-			<%= link_to "Book", new_spaceship_booking_path(spaceship), class: "btn btn-success mt-3 " %>
-	  </div>
+  <div class="cover" style="background-image: url('<%= url_for(spaceship.photo) %>')">
+    <h1><%= spaceship.name %></h1>
+    <span class="price"><%= spaceship.price_per_day %>€/day</span>
+    <span class="fuel"><%= spaceship.fuel %> <i class="fa-solid fa-circle-radiation"></i></span>
+    <span class="places"><%= spaceship.number_of_places %> <i class="fas fa-users"></i></span>
+    <div class="card-back">
+      <%= link_to "Details", spaceship_path(spaceship), class: "btn btn-success mt-3" %>
+      <%= link_to "Book", new_spaceship_booking_path(spaceship), class: "btn btn-success mt-3 " %>
+    </div>
   </div>
 </div>
