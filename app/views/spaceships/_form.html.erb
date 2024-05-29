@@ -1,4 +1,4 @@
-<%= simple_form_for [current_user, spaceship] do |f| %>
+<%= simple_form_for spaceship do |f| %>
   <%= f.input :name, label: 'Name', placeholder: 'Name of the spaceship' %>
   <%= f.input :description, label: 'Description', placeholder: 'Description of the spaceship' %>
   <%= f.input :price_per_day, label: 'Price (€)', placeholder: 'Price per day eg. 15€' %>
