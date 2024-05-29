@@ -3,8 +3,8 @@
   <h1 class="my-5">Dashboard</h1>
   <nav>
     <div class="nav mb-3" id="nav-tab" role="tablist">
-      <button class="nav-link active text-black" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Customer</button>
-      <button class="nav-link text-gold" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Pro</button>
+      <button class="nav-link active text-black" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Pro</button>
+      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Customer</button>
     </div>
   </nav>
 </div>
@@ -14,44 +14,66 @@
     <div class="col">
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-          <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2>My current rentals</h2>
-            <%= link_to "Explore spaceships", spaceships_path, class: "btn btn-primary" %>
-            </div>
 
-            <%# <button class="btn btn-primary" data-toggle="modal" data-target="#newSpaceShipModal">Explore spaceships</button> %>
-             <div class="row">
-            <% @bookings.each do |booking| %>
-            <div class="col-12 col-md-6 col-lg-4 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <%# <h5 class="card-title"><%= booking.spaceship.name %></h5>
-                  <%= cl_image_tag booking.spaceship.photo.key, class: "img-card-top" %>
-                  <p class="card-text"><%= booking.spaceship.name %></p>
-                </div>
-              </div>
-            </div>
-            <% end %>
-            </div>
-          </div>
-          </div>
-          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-             <h2>My spaceships</h2>
-            <%# <button class="btn btn-secondary" data-toggle="modal" data-target="#newSpaceShipModal">Add a spaceship</button> %>
-            <%= link_to "Add a spaceship", new_spaceship_path, class: "btn btn-secondary" %>
+
+
+            <h2 class="my-4">My bookings</h2>
+<div class="row my-4">
+  <% @bookings.each do |booking|  %>
+  <div class="card mb-3 col-6">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <%= cl_image_tag(booking.spaceship.photo.key, width: 200, heigth: 100)%>
+      </div>
+      <div class="col-md-8 p-3">
+        <div class="card-body">
+          <h2 class="card-title"><%= booking.spaceship.name %></h2>
+          <h6 class="card-text">From: <%=booking.start_date %></h6>
+          <h6 class="card-text">To: <%=booking.end_date %></h6>
+          <h6 class="card-text"><%= booking.status.capitalize %></h6>
+          <% booking.associated_buttons_status.each do |button| %>
+          <%= link_to button[:text], dashboards_path, data: {turbo_method: :patch}, class: button[:classes] %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <% end %>
+</div>
+
+
+
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>My spaceships</h2>
+            <%= link_to "Add a spaceship", new_spaceship_path, class: "btn btn-success" %>
           </div>
           <div class="row">
             <% @spaceships.each do |spaceship| %>
             <div class="col-12 col-md-6 col-lg-4 mb-4">
-              <div class="card">
+              <div class="card mb-4 shadow-sm">
+                <%= cl_image_tag spaceship.photo.key, class: "card-img-top" %>
                 <div class="card-body">
                   <h5 class="card-title"><%= spaceship.name %></h5>
+                  <h5 class="card-title text-success">
+                    <%= spaceship.name %>
+                  </h5>
                   <p class="card-text"><%= spaceship.description %></p>
-                  <a href="<%= spaceship_path(spaceship) %>" class="btn btn-primary">View</a>
+                  <div class="d-flex justify-content-between mt-3">
+                    <h6><i class="fa-solid fa-radiation"></i> <%= spaceship.fuel %></h6>
+                    <h6><i class="fa-solid fa-user-group"></i> <%= spaceship.number_of_places %></h6>
+                    <h6><i class="fa-regular fa-gem"></i> <%= spaceship.price_per_day %>$ / day</h6>
+                  </div>
+                  <a href="#" class="btn btn-primary mt-4">View</a>
                 </div>
               </div>
             </div>
+
+
+
+
+
             <% end %>
             </div>
           </div>
@@ -59,4 +81,38 @@
       </div>
     </div>
   </div>
+<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>My current rentals</h2>
+    <%= link_to "Explore spaceships", spaceships_path, class: "btn btn-success" %>
+    </div>
+      <div class="row">
+    <% @bookings.each do |booking| %>
+    <div class="col-12 col-md-6 col-lg-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <%# <h5 class="card-title"><%= booking.spaceship.name %></h5>
+          <%= cl_image_tag booking.spaceship.photo.key, class: "img-card-top" %>
+          <p class="card-text"><%= booking.spaceship.name %></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    </div>
+    </div>
+  </div>
 </div>
+
+
+<style>
+
+  .card{
+  border-radius: 15px;
+  overflow: hidden;
+  img{
+    height: 250px;
+    object-fit: cover;
+  }
+}
+</style>
