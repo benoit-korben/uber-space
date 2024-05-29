@@ -9,13 +9,20 @@
           <li><%= link_to "Spaceships", spaceships_path %></a></li>
         </ul>
         <div class="nav-item dropdown">
-          <%= cl_image_tag current_user.photo.key, class: "dropdown-toggle rounded-circle", id: "navbarDropdown", 
-          data: {
-            bs_toggle: "dropdown",
-            bs_target: "#navbarDropdown",
-            aria_haspopup: "true",
-            aria_expanded: "false"
-          }, width: 40, height: 40 %>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "dropdown-toggle rounded-circle", id: "navbarDropdown", 
+            data: {
+              bs_toggle: "dropdown",
+              bs_target: "#navbarDropdown",
+              aria_haspopup: "true",
+              aria_expanded: "false"
+            }, width: 40, height: 40 %>
+          <% else %>
+          <i class="fas fa-user dropdown-toggle rounded-circle text-white" id="navbarDropdown" data-bs-toggle="dropdown"
+           data-bs-target="#navbarDropdown" data-ari_haspopup="true" data-aria_expanded="false"
+           style="cursor: pointer;"></i>
+
+          <% end %>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <%= link_to "Dashboard", dashboards_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, 
