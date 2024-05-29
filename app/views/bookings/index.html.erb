@@ -14,8 +14,10 @@
           <h6 class="card-text">From: <%=booking.start_date %></h6>
           <h6 class="card-text">To: <%=booking.end_date %></h6>
           <h6 class="card-text"><%= booking.status.capitalize %></h6>
-          <button type="button" class="btn btn-success">Confirm</button>
-          <button type="button" class="btn btn-danger">Cancel</button>
+          <%= link_to "Confirm", process_data_your_path, class: "btn btn-primary", method: :post %>
+          <button type="button" class="btn btn-success <%= booking.status == "pending" ? "" : "d-none"%>">Confirm</button>
+          <button type="button" class="btn btn-danger <%= booking.status == "pending" ? "" : "d-none"%>">Refuse</button>
+          <button type="button" class="btn btn-danger <%= booking.status == "booked" ? "" : "d-none"%>">Cancel</button>
         </div>
       </div>
     </div>
