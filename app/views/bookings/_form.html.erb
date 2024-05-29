@@ -1,0 +1,5 @@
+ <%= simple_form_for([spaceship, booking]) do |f| %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.button :submit, "Ask for the reservation", class: "btn btn-primary mt-3" %>
+  <% end %>

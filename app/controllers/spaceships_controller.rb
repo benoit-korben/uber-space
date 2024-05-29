@@ -1,6 +1,6 @@
 class SpaceshipsController < ApplicationController
   before_action :set_spaceship, only: [:show]
-  # before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
     @spaceships = Spaceship.all
