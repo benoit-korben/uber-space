@@ -8,4 +8,8 @@ class Booking < ApplicationRecord
     finished: 2,
     cancelled: 3
   }
+
+  def update
+  end
+  
 end
