@@ -20,8 +20,9 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.spaceship = @spaceship
     @booking.user = current_user
+    @booking.status = 0
     if @booking.save!
-      redirect_to bookings_path, notice: 'Booking was successfully created.'
+      redirect_to dashboards_path, notice: 'Booking was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
