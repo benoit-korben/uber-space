@@ -1,0 +1,7 @@
+<%= simple_form_for [current_user, spaceship] do |f| %>
+  <%= f.input :name, label: 'Name', placeholder: 'Name of the spaceship' %>
+  <%= f.input :description, label: 'Description', placeholder: 'Description of the spaceship' %>
+  <%= f.input :price_per_day, label: 'Price (€)', placeholder: 'Price per day eg. 15€' %>
+  <%= f.input :number_of_places, label: 'Number of Places', in: 1..5, placeholder: '1 to 5' %>
+  <%= f.button :submit, 'Add Spaceship', class: "btn btn-success" %>
+<% end %>
