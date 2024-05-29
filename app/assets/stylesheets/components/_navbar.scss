@@ -20,28 +20,30 @@
   margin-left: 2em;
 }
 
-.navbar a{
+.navbar a {
   text-decoration: none;
 }
 
-.navbar ul li a{
-  color: lightgray;
-}
+.navbar {
+  height:75px;
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-.navbar nav{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+    ul {
+      display: flex;
+      align-items: center;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
 
-.navbar nav ul {
-  display: flex;
-  align-items: center;
-  list-style-type: none;
-  padding: 0;
-  margin:0;
-}
-
-.navbar nav ul li {
-  margin: 0 1em;
+      li {
+        margin: 0 1em;
+        a{
+          color: lightgray;
+        }
+      }
+    }
+  }
 }
