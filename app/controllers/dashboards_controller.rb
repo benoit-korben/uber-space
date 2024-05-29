@@ -2,30 +2,14 @@ class DashboardsController < ApplicationController
   before_action :authenticate_user!, only: [:index]
 
   def index
-    display_spaceships
-    display_bookings
-  end
-
-  private
-
-  def display_bookings
     if current_user
       @bookings = Booking.where(user_id: current_user.id)
-      # raise
+      @pending_bookings = @bookings.where(status: "pending")
+      @confirmed_bookings = @bookings.where(status: "confirmed")
+      @canceled_bookings = @bookings.where(status: "canceled")
     end
-  end
-
-  def display_spaceships
-    if current_user
-      @spaceships = Spaceship.where(user_id: current_user.id)
-    else
-      @spaceships = Spaceship.all
-      # render partial: 'spaceships/index', locals: { spaceships: @spaceships }
-    end
-  end
-
-  def set_spaceship
-    @spaceship = Spaceship.find(params[:id])
+    @spaceships = current_user ? Spaceship.where(user_id: current_user.id) : []
+    raise
   end
 
 

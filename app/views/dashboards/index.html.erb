@@ -1,10 +1,10 @@
 <%# Title %>
-<div class="d-flex justify-content-between align-items-center">
-  <h1 class="my-5">Dashboard</h1>
-  <nav>
-    <div class="nav mb-3" id="nav-tab" role="tablist">
-      <button class="nav-link active text-black" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Pro</button>
-      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Customer</button>
+<div class="d-flex justify-content-between align-items-end my-5">
+  <h1 class="m-0">Dashboard</h1>
+  <nav data-controller="dashboard-tabs">
+    <div class="nav" id="nav-tab" role="tablist">
+      <button class="nav-link active text-black p-0 underline" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" data-action="click->dashboard-tabs#toggle">Owner</button>
+      <button class="nav-link p-0" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" data-action="click->dashboard-tabs#toggle">Customer</button>
     </div>
   </nav>
 </div>
@@ -16,6 +16,61 @@
         <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
           <h2 class="my-4">My bookings</h2>
           <div class="row my-4">
+
+
+<div class="container p-4 bg-light">
+    <h3 class="mb-3">Please check our more latest Design @ <a href="https://codepen.io/Gaurav-Rana-the-reactor">Codepen</a></h3>
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item rounded-3 border-0 shadow mb-2">
+      <h2 class="accordion-header">
+        <button class="accordion-button border-bottom collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+          Pending bookings
+        </button>
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+
+
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item rounded-3 border-0 shadow mb-2">
+      <h2 class="accordion-header">
+        <button class="accordion-button border-bottom collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+          Confirmed Bookings
+        </button>
+      </h2>
+      <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+
+
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item rounded-3 border-0 mb-2 shadow">
+      <h2 class="accordion-header">
+        <button class="accordion-button border-bottom collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+          Cancelled Bookings
+        </button>
+      </h2>
+      <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
             <% @bookings.each do |booking|  %>
               <div class="card mb-3 col-6">
                 <div class="row g-0">
