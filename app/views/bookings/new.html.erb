@@ -1,8 +1,7 @@
-<h1 class="my-3">Ask for booking <%= @spaceship.name %></h1>
-
-<%= simple_form_for([@spaceship, @booking]) do |f| %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.button :submit, "Ask for the reservation", class: "btn btn-primary" %>
-<% end %>
-  
+<div class="row justify-content-center my-4">
+  <div class="col-6">
+    <h1 class="my-3">Ask for booking <%= @spaceship.name %></h1>
+    <%= cl_image_tag @spaceship.photo.key, class: "img-fluid" %>
+    <%= render 'form', spaceship: @spaceship, booking: @booking %>
+  </div>
+</div>

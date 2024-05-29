@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_spaceship, only: [:new, :create]
   before_action :set_booking, only: [:update]
+  before_action :authenticate_user!, only: %i[new create update]
 
   def index
     @bookings = Booking.order(:status)
