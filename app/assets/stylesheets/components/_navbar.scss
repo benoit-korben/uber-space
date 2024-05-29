@@ -20,12 +20,9 @@
   margin-left: 2em;
 }
 
-.navbar a {
-  text-decoration: none;
-}
 
 .navbar {
-  height:60px;
+  min-height:50px;
   nav {
     display: flex;
     align-items: center;
@@ -42,6 +39,7 @@
         margin: 0 1em;
         a{
           color: lightgray;
+          text-decoration: none;
         }
       }
     }
