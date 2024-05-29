@@ -1,11 +1,14 @@
 class BookingsController < ApplicationController
   before_action :set_spaceship, only: [:new, :create]
+  before_action :set_booking, only: [:update]
 
   def index
-    @bookings = Booking.all
+    @bookings = Booking.order(:status)
   end
 
-  def show
+  def update
+    @booking.update(booking_params)
+    redirect_to bookings_path
   end
 
   def new
@@ -25,11 +28,15 @@ class BookingsController < ApplicationController
 
   private
 
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
+
   def set_spaceship
     @spaceship = Spaceship.find(params[:spaceship_id])
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :user_id, :spaceship_id)
+    params.require(:booking).permit(:start_date, :status, :end_date, :user_id, :spaceship_id)
   end
 end
