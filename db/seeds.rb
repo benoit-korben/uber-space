@@ -1,4 +1,5 @@
 require "open-uri"
+require "faker"
 
 puts "cleaning database"
 Booking.destroy_all
