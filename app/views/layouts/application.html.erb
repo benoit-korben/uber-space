@@ -12,9 +12,10 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
-    <main class="container">
+    <%= controller_name == 'dashboards' ? render("shared/navbar_dashboard") : render("shared/navbar") %>
+    <main class="<%= controller_name == 'dashboards' ? 'container-fluid dashboards' : 'container' %>">
       <%= yield %>
+    </main>
     </main>
   </body>
 </html>
