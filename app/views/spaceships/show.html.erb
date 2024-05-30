@@ -55,8 +55,10 @@
       </div>
     </div>
     <div class="col-4">
-      <h4>Book the spaceship</h4>
-      <%= render "bookings/form", spaceship: @spaceship, booking: @booking %>
+      <div class="booking-form">
+        <h4>Book the spaceship</h4>
+        <%= render "bookings/form", spaceship: @spaceship, booking: @booking %>
+      </div>
     </div>
   </div>
 </div>
