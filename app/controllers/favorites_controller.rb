@@ -8,9 +8,11 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    raise
-    @favorite = Favorite.find(params[:id])
-    @favorite.destroy
-    redirect_to spaceship_path(@favorite.spaceship)
+    current_user.favorites.each do |favorite|
+      if favorite.spaceship == Spaceship.find(params[:spaceship_id])
+        favorite.destroy
+        redirect_to spaceship_path(favorite.spaceship)
+      end
+    end
   end
 end
