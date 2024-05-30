@@ -1,0 +1,22 @@
+<div class="accordion-body">
+  <% bookings.each do |booking|  %>
+    <div class="card mb-3 col-6 <%= booking.status %>">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <%= cl_image_tag(booking.spaceship.photo.key, width: 200, heigth: 100)%>
+        </div>
+        <div class="col-md-8 p-3">
+          <div class="card-body">
+            <h2 class="card-title"><%= booking.spaceship.name %></h2>
+            <h6 class="card-text">From: <%=booking.start_date %></h6>
+            <h6 class="card-text">To: <%=booking.end_date %></h6>
+            <h6 class="card-text"><%= booking.status.capitalize %></h6>
+            <% booking.associated_buttons_status.each do |button| %>
+              <%= link_to button[:text], dashboards_path, data: {turbo_method: :patch}, class: button[:classes] %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

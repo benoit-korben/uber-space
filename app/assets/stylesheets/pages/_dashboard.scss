@@ -1,0 +1,70 @@
+.bookings-container{
+  background: #F7F7F7;
+  border-radius:15px;
+}
+
+.nav-link{
+  position:relative;
+  margin: 0 10px;
+  font-size: 1.2rem;
+  color: #000000;
+
+  &:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #000;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+
+  &:hover:after, &.active:after {
+    width: 100%;
+    left: 0;
+  }
+}
+
+.accordion-button:not(.collapsed),
+.accordion-button:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: none;
+  background-color: transparent;
+}
+.accordion-button::after {
+  width: 11px;
+  height: 11px;
+  border-radius: 100%;
+  background-image: none !important;
+}
+.accordion-button::after {
+  background-color: var(--bs-gray-300);
+}
+
+.accordion-button.collapsed.pending-bookings::after {
+  background-color: var(--bs-warning);
+}
+
+.accordion-button.collapsed.confirmed-bookings::after {
+  background-color: var(--bs-success);
+}
+
+.accordion-button.collapsed.cancelled-bookings::after {
+  background-color: var(--bs-danger);
+}
+
+.pending{
+  border: solid 1px var(--bs-warning);
+}
+
+.finished{
+  border: solid 1px var(--bs-success);
+}
+
+.cancelled{
+  border: solid 1px var(--bs-danger);
+}
