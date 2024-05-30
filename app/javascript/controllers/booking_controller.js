@@ -37,8 +37,7 @@ update(event)  {
   })
   .then(data => {
     // Further processing if you have data from a successful response
-    console.log(data)
-    this.cardTarget.innerHTML = data;
+     this.element.outerHTML = data.updating_booking_customer;
   })
   .catch(error => {
     console.error('Error:', error);

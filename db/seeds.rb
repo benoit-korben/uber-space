@@ -181,7 +181,7 @@ end
   spaceship.save
 end
 
-10.times.each_with_index do |_, index|
+150.times.each_with_index do |_, index|
   Booking.new(
   start_date: Faker::Date.between(from: 505.days.ago, to: Date.today),
   end_date: Faker::Date.between(from: Date.today, to: 1.year.from_now),
