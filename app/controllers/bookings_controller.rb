@@ -24,7 +24,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to dashboards_path, notice: 'Booking was successfully created.'
     else
-      render :new, status: :unprocessable_entity
+      render template: "spaceships/show", status: :unprocessable_entity
     end
   end
 
