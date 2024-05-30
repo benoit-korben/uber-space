@@ -20,9 +20,12 @@
   margin-left: 2em;
 }
 
-
 .navbar {
   min-height:50px;
+
+  svg {
+    width: 150px;
+  }
   nav {
     display: flex;
     align-items: center;
