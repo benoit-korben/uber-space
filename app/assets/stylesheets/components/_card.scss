@@ -21,7 +21,7 @@ $transition-time: 1s;
         border-radius: 15px;
       }
 
-      h1 {
+      h2 {
         transform: translateZ(100px);
       }
 
@@ -74,7 +74,7 @@ $transition-time: 1s;
       border-radius: 15px;
     }
 
-    h1 {
+    h2 {
       font-weight: 600;
       position: absolute;
       bottom: 55px;
@@ -83,7 +83,7 @@ $transition-time: 1s;
       transform-style: preserve-3d;
       transition: ease all $transition-time;
       z-index: 3;
-      font-size: 3em;
+      font-size: 2em;
       transform: translateZ(0px);
     }
 
