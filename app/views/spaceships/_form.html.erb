@@ -3,6 +3,7 @@
   <%= f.input :description, label: 'Description', placeholder: 'Description of the spaceship' %>
   <%= f.input :price_per_day, label: 'Price (€)', placeholder: 'Price per day eg. 15€' %>
   <%= f.input :number_of_places, label: 'Number of Places', as: :integer, collection: 1..100, selected: 1, input_html: { min: 1, max: 100 } %>
+  <%= f.input :fuel, label: 'Fuel', label: "The fuel your spaceship use" %>
   <%= f.input :main_image, label: 'Main Photo', as: :file %>
   <%= f.input :secondary_images, label: 'Secondary Photos', as: :file, input_html: { multiple: true }, required: false %>
   <%= f.button :submit, 'Add Spaceship', class: "btn btn-success" %>
