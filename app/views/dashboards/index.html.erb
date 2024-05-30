@@ -16,11 +16,11 @@
       <div class="accordion accordion-flush" id="accordionFlush">
         <div class="accordion-item rounded-3 border-0 shadow mb-2">
           <h3 class="accordion-header">
-            <button class="accordion-button border-bottom collapsed fw-semibold pending-bookings" type="button" data-bs-toggle="collapse" data-bs-target="#pending-bookings" aria-expanded="false" aria-controls="pending-bookings">
+            <button class="accordion-button border-bottom fw-semibold pending-bookings <%= !@pending_bookings.empty? ? '' : 'collapsed' %>" type="button" data-bs-toggle="collapse" data-bs-target="#pending-bookings" aria-expanded="false" aria-controls="pending-bookings">
               Pending bookings
             </button>
           </h3>
-          <div id="pending-bookings" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+          <div id="pending-bookings" class="accordion-collapse collapse <%= !@pending_bookings.empty? ? 'show' : '' %>" data-bs-parent="#accordionFlush">
             <%= render "shared/accordion", bookings:@pending_bookings %>
           </div>
         </div>
