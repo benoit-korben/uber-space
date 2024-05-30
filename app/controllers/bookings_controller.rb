@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
     @booking.spaceship = @spaceship
     @booking.user = current_user
     @booking.status = 0
-    if @booking.save!
+    if @booking.save
       redirect_to dashboards_path, notice: 'Booking was successfully created.'
     else
       render :new, status: :unprocessable_entity
@@ -39,6 +39,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :status, :end_date, :user_id, :spaceship_id)
+    params.require(:booking).permit(:start_date, :status, :end_date, :user_id, :spaceship_id, :message)
   end
 end
