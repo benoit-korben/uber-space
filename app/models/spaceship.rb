@@ -7,6 +7,13 @@ class Spaceship < ApplicationRecord
 
   validate :validate_secondary_images_count
 
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :price_per_day, presence: true
+  validates :number_of_places, presence: true
+  validates :fuel, presence: true
+  validates :main_image, presence: true
+
   private
 
   def validate_secondary_images_count

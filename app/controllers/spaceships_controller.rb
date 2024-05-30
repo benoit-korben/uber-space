@@ -21,7 +21,7 @@ class SpaceshipsController < ApplicationController
     if @spaceship.save
       redirect_to spaceship_path(@spaceship)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

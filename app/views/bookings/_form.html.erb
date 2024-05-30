@@ -1,6 +1,6 @@
  <%= simple_form_for([spaceship, booking]) do |f| %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
+    <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
+    <%= f.input :end_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
     <%= f.input :message, placeholder: "Tell the owner why you want to rent this spaceship" %>
     <%= f.button :submit, "Ask for the reservation", class: "btn btn-primary mt-3" %>
   <% end %>
