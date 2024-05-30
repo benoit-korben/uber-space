@@ -3,7 +3,7 @@
   <div class="row mb-5 gap-5 images-container">
     <div class="col-7 h-100 p-0">
       <div class="spaceship-image-detail">
-        <img class="rounded" src="<%= url_for(@spaceship.photo) %>" alt="" height="400">
+        
       </div>
     </div>
     <div class="col p-0">
@@ -20,7 +20,7 @@
       <div class="row">
         <div class="col-4 text-center">
           <i class="fa-solid fa-circle-radiation"></i>
-          <p><%= @spaceship.fuel.capitalize %></p>
+          <p><%= @spaceship.fuel %></p>
         </div>
         <div class="col-4 text-center">
           <i class="fa-solid fa-users"></i>
@@ -32,23 +32,30 @@
         </div>
       </div>
     </div>
-    <div class="col-4 d-flex justify-content-end p-0">
-      <%= link_to "Ask for a reservation", new_spaceship_booking_path(@spaceship), class: "btn btn-primary" %>
-    </div>
   </div>
   <div class="row mt-5">
-    <div class="col-12 d-flex align-items-center gap-3">
-      <img class="rounded-circle" src="https://i.pinimg.com/236x/9b/d8/5f/9bd85f89df921d5da6df83901fd2451b.jpg" alt="" width="75" height="75">
-      <div>
-        <h2 class="m-0"><%= @spaceship.user.name %></h2>
-        <p>Spaceship owner</p>
+    <div class="col-8">
+      <div class="col-12 d-flex align-items-center gap-3">
+        <% if @spaceship.user.photo.attached? %>
+        <%= cl_image_tag(@spaceship.user.photo.key, class: "rounded-circle", width: 75, height: 75, crop: :fill) %>
+        <% else %>
+        <img class="rounded-circle" src="https://images.unsplash.com/photo-1464802686167-b939a6910659?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2FsYXh5fGVufDB8fDB8fHww" alt="" width="75" height="75">
+        <% end %>
+        <div>
+          <h2 class="m-0"><%= @spaceship.user.name %></h2>
+          <p>Spaceship owner</p>
+        </div>
+      </div>
+      <div class="container my-5">
+        <div class="col-12">
+          <h2>Description</h2>
+          <p><%= @spaceship.description %></p>
+        </div>
       </div>
     </div>
-    <div class="container my-5">
-      <div class="col-12">
-        <h2>Description</h2>
-        <p><%= @spaceship.description %></p>
-      </div>
+    <div class="col-4">
+      <h4>Book the spaceship</h4>
+      <%= render "bookings/form", spaceship: @spaceship, booking: @booking %>
     </div>
   </div>
 </div>
