@@ -3,7 +3,7 @@ class DashboardsController < ApplicationController
 
   def index
     if current_user
-      @bookings = Booking.where(user_id: current_user.id)
+      @bookings = Booking.where(user_id: current_user.id).in_order_of(:status, Booking.statuses.keys)
       @pending_bookings = @bookings.where(status: "pending")
       @confirmed_bookings = @bookings.where(status: "finished")
       @cancelled_bookings = @bookings.where(status: "cancelled")
