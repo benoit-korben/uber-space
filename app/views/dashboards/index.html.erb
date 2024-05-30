@@ -58,7 +58,7 @@
       <% @spaceships.each do |spaceship| %>
         <div class="col-12 col-md-6 col-lg-4 mb-4">
           <div class="card mb-4 shadow-sm">
-            <%= cl_image_tag spaceship.photo.key, class: "card-img-top" %>
+            <%= cl_image_tag spaceship.main_image.key, class: "card-img-top" %>
             <div class="card-body">
               <h5 class="card-title text-success">
                 <%= spaceship.name %>
@@ -85,7 +85,7 @@
         <div class="card mb-3 col-6 <%= rental.status %>">
           <div class="row g-0">
             <div class="col-md-4">
-              <%= cl_image_tag(rental.spaceship.photo.key, width: 200, heigth: 100)%>
+              <%= cl_image_tag(rental.spaceship.main_image.key, width: 200, heigth: 100)%>
             </div>
             <div class="col-md-8 p-3">
               <div class="card-body">
