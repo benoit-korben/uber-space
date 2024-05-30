@@ -7,6 +7,7 @@ class SpaceshipsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
   end
 
   def new
@@ -20,7 +21,7 @@ class SpaceshipsController < ApplicationController
     if @spaceship.save
       redirect_to spaceship_path(@spaceship)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -31,6 +32,6 @@ private
   end
 
   def spaceship_params
-    params.require(:spaceship).permit(:name, :fuel, :number_of_places, :price_per_day, :is_available, :photo)
+    params.require(:spaceship).permit(:name, :fuel, :number_of_places, :price_per_day, :description, :is_available, :main_image, secondary_images: [])
   end
 end

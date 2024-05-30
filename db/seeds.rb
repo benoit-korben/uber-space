@@ -23,15 +23,20 @@ photo = ["https://images.unsplash.com/photo-1601892782633-675465fa7f3a",
 ]
 10.times.each_with_index do |_, index|
   file = URI.open("#{photo[index]}")
-  spaceship = Spaceship.new(name: Faker::Name.first_name,
-  description: Faker::Lorem.paragraph_by_chars(number: 1500),
-  number_of_places: rand(0..100),
-  price_per_day: rand(50..5000),
-  fuel: ["Uranium", "Plutonium", "tritium"].sample,
-  is_available: [true, false].sample,
-  user_id: User.all.sample.id,
+  spaceship = Spaceship.new(
+    name: Faker::Books::Dune.planet,
+    description: Faker::Lorem.paragraph_by_chars(number: 1500),
+    number_of_places: rand(0..100),
+    price_per_day: rand(50..5000),
+    fuel: ["Uranium", "Plutonium", "Tritium", "Deuterium", "Antimatter"].sample,
+    is_available: [true, false].sample,
+    user_id: User.all.sample.id,
   )
-  spaceship.photo.attach(io: file, filename: "spaceship.jpeg", content_type: "image/jpeg")
+  spaceship.main_image.attach(io: file, filename: "spaceship.jpeg", content_type: "image/jpeg")
+  4.times do |i|
+    file = URI.open("#{photo.sample}")
+    spaceship.secondary_images.attach(io: file, filename: "spaceship-#{i}.jpeg", content_type: "image/jpeg")
+  end
   spaceship.save
 end
 
@@ -40,6 +45,7 @@ end
   end_date: Faker::Date.between(from: Date.today, to: 1.year.from_now),
   status: rand(0..4),
   spaceship_id: Spaceship.all.sample.id,
-  user_id: User.all.sample.id
+  user_id: User.all.sample.id,
+  message: Faker::Lorem.paragraph_by_chars(number: 150)
 ).save
 end

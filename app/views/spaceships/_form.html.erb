@@ -1,7 +1,10 @@
-<%= simple_form_for spaceship do |f| %>
+<%= simple_form_for spaceship, multipart: true do |f| %>
   <%= f.input :name, label: 'Name', placeholder: 'Name of the spaceship' %>
   <%= f.input :description, label: 'Description', placeholder: 'Description of the spaceship' %>
   <%= f.input :price_per_day, label: 'Price (€)', placeholder: 'Price per day eg. 15€' %>
-  <%= f.input :number_of_places, label: 'Number of Places', in: 1..5, placeholder: '1 to 5' %>
+  <%= f.input :number_of_places, label: 'Number of Places', as: :integer, collection: 1..100, selected: 1, input_html: { min: 1, max: 100 } %>
+  <%= f.input :fuel, label: 'Fuel', label: "The fuel your spaceship use" %>
+  <%= f.input :main_image, label: 'Main Photo', as: :file %>
+  <%= f.input :secondary_images, label: 'Secondary Photos', as: :file, input_html: { multiple: true }, required: false %>
   <%= f.button :submit, 'Add Spaceship', class: "btn btn-success" %>
 <% end %>
