@@ -1,12 +1,10 @@
 figure {
   height: 650px;
   overflow: hidden;
-  border-radius: 10px;
 
   .homepage-hero {
     object-fit: cover;
   }
-
   figcaption {
     top: 30%;
     left: 5%;
@@ -19,11 +17,11 @@ figure {
     height: 100%;
   }
 
-  img {
+  img{
     transition: transform 3s;
   }
 
-  &:hover>img {
+  &:hover > img {
     transform: scale(1.05);
   }
 
