@@ -12,6 +12,7 @@
 @import "pages/index";
 @import "pages/home";
 @import "pages/dashboard";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Figtree:wght@400;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -21,4 +22,12 @@
 
 p {
   margin: 0;
+}
+
+body {
+  font-family: 'Figtree', serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Space Grotesk', sans-serif;
 }
