@@ -75,42 +75,15 @@
       <% end %>
     </div>
   </div>
-  <div class="tab-pane fade" id="nav-customer" role="tabpanel" aria-labelledby="nav-customer-tab">
+  <div class="tab-pane fade" data-controller="bookings" id="nav-customer" role="tabpanel" aria-labelledby="nav-customer-tab">
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h2>My current rentals</h2>
+      <h2>My current bookings</h2>
       <%= link_to "Explore spaceships", spaceships_path, class: "btn btn-success" %>
     </div>
     <div class="row">
-      <% @rentals.each do |rental|  %>
-        <div class="card mb-3 col-6 <%= rental.status %>">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <%= cl_image_tag(rental.spaceship.main_image.key, width: 200, heigth: 100)%>
-            </div>
-            <div class="col-md-8 p-3">
-              <div class="card-body">
-                <h2 class="card-title"><%= rental.spaceship.name %></h2>
-                <h6 class="card-text">From: <%=rental.start_date %></h6>
-                <h6 class="card-text">To: <%=rental.end_date %></h6>
-                <h6 class="card-text"><%= rental.status.capitalize %></h6>
-                <% rental.associated_buttons_status.each do |button| %>
-                  <%= link_to button[:text], dashboards_path, data: {turbo_method: :patch}, class: button[:classes] %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
+      <% @booked_bookings.each do |booking|  %>
+        <%= render "booking_customer", booking: booking %>
       <% end %>
     </div>
   </div>
 </div>
-<style>
-  .card {
-    border-radius: 15px;
-    overflow: hidden;
-  }
-  .card img {
-    height: 250px;
-    object-fit: cover;
-  }
-</style>
