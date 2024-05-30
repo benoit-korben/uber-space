@@ -21,10 +21,16 @@ class BookingsController < ApplicationController
     @booking.spaceship = @spaceship
     @booking.user = current_user
     @booking.status = 0
-    if @booking.save!
+    end_date = @booking.end_date
+    start_date = @booking.start_date
+    if end_date > start_date
+      if @booking.save
       redirect_to dashboards_path, notice: 'Booking was successfully created.'
-    else
+      else
       render :new, status: :unprocessable_entity
+      end
+    else
+      redirect_to new_spaceship_booking_path, notice: 'End date must be after start date.'
     end
   end
 

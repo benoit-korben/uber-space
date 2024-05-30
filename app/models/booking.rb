@@ -1,6 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :spaceship
   belongs_to :user
+  validates :message, presence: true
 
   enum status: {
     pending: 0,
