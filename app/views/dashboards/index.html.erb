@@ -6,7 +6,10 @@
         <button class="nav-link" id="nav-rentals-tab" data-bs-toggle="tab" data-bs-target="#nav-rentals" type="button" role="tab" aria-controls="nav-rentals" aria-selected="true"><i class="fas fa-rocket me-2"></i> Rentals</button>
         <button class="nav-link" id="nav-favorites-tab" data-bs-toggle="tab" data-bs-target="#nav-favorites" type="button" role="tab" aria-controls="nav-favorites" aria-selected="true"><i class="fas fa-heart me-2"></i> Favorites</button>
         <button class="nav-link" id="nav-notifications-tab" data-bs-toggle="tab" data-bs-target="#nav-notifications" type="button" role="tab" aria-controls="nav-notifications" aria-selected="true"><i class="fas fa-bell me-2"></i> Notifications</button>
-        <button class="nav-link"><i class="fas fa-sign-out-alt me-2"></i> Logout</button>
+        <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
+          <button class="nav-link"><i class="fas fa-sign-out-alt me-2"></i> Logout</button>
+        <% end %>
+
       </div>
       <div>
         <hr>
