@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :spaceships
   has_one_attached :photo
+  has_many :favorites
 end

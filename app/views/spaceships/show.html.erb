@@ -1,4 +1,19 @@
-<h1 class="my-4"><%= @spaceship.name %></h1>
+<div class="d-flex justify-content-between align-items-center">
+  <h1 class="my-3"><%= @spaceship.name %></h1>
+  <% if current_user.favorites.exists?(spaceship: @spaceship) %>
+    <%= form_with(url: spaceship_favorite_path(@spaceship), method: :delete) do |f| %>
+      <%= f.button type: :submit, class: "btn btn-link" do %>
+        <i class="fa-solid fa-heart favorite"></i>
+      <% end %>
+    <% end %>
+  <% else %>
+    <%= form_with(url: spaceship_favorites_path(@spaceship), method: :post) do |f| %>
+      <%= f.button type: :submit, class: "btn btn-link" do %>
+        <i class="fa-regular fa-heart favorite"></i>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
 <div class="container-fluid">
   <div class="row mb-3 gap-5 images-container">
     <div class="col-7 h-100 p-0">
@@ -53,10 +68,12 @@
       </div>
     </div>
     <div class="col-4">
-      <div class="booking-form">
-        <h4>Book the spaceship</h4>
-        <%= render "bookings/form", spaceship: @spaceship, booking: @booking %>
-      </div>
+      <% if !@spaceship.user == current_user %>
+        <div class="booking-form">
+          <h4>Book the spaceship</h4>
+          <%= render "bookings/form", spaceship: @spaceship, booking: @booking %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

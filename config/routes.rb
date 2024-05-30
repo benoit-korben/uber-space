@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :spaceships, only: %i[index show new create] do
     resources :bookings, only: %i[create update]
+    resources :favorites, only: %i[create destroy]
   end
   resources :dashboards, only: [:index]
   resources :bookings, only: [:update]

@@ -8,6 +8,7 @@ class SpaceshipsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @favorite = Favorite.new
   end
 
   def new
