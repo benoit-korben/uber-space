@@ -31,6 +31,17 @@
     align-items: center;
     justify-content: space-between;
 
+    .dropdown-item{
+      &:hover {
+        background-color: var(--bs-primary);
+      }
+    }
+
+    i{
+      &:hover {
+        color: var(--bs-primary)!important;
+      }
+    }
     ul {
       display: flex;
       align-items: center;
@@ -43,7 +54,11 @@
         a{
           color: lightgray;
           text-decoration: none;
+          &:hover {
+            color: var(--bs-primary);
+          }
         }
+
       }
     }
   }
