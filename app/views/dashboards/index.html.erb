@@ -81,7 +81,7 @@
       <%= link_to "Explore spaceships", spaceships_path, class: "btn btn-success" %>
     </div>
     <div class="row">
-      <% @booked_bookings.each do |booking|  %>
+      <% @bookings.each do |booking|  %>
         <%= render "booking_customer", booking: booking %>
       <% end %>
     </div>
