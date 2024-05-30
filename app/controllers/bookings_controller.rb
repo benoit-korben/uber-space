@@ -8,8 +8,15 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @booking.update(booking_params)
-    redirect_to bookings_path
+    #<ActionController::Parameters {"id"=>"901", "controller"=>"bookings",
+    #"action"=>"update", "booking"=>{"id"=>"901"}} permitted: false>
+    # debugger
+    @booking.status = Booking.statuses[params[:status]]
+    @booking.save
+    respond_to do |format|
+      format.html { redirect_to dashboards_path }
+      format.json # Follows the classic Rails flow and look for a create.json view
+    end
   end
 
   def new

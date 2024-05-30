@@ -6,7 +6,8 @@ class SpaceshipsController < ApplicationController
     @spaceships = Spaceship.all
   end
 
-  def show; end
+  def show
+  end
 
   def new
     @spaceship = Spaceship.new
@@ -23,11 +24,11 @@ class SpaceshipsController < ApplicationController
     end
   end
 
+private
+
   def set_spaceship
     @spaceship = Spaceship.find(params[:id])
   end
-
-  private
 
   def spaceship_params
     params.require(:spaceship).permit(:name, :fuel, :number_of_places, :price_per_day, :is_available, :photo)
