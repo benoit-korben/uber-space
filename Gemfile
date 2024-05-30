@@ -51,6 +51,8 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "devise"
 gem "cloudinary", "2.0.2"
+gem 'faker'
+
 
 group :development, :test do
   gem "dotenv-rails"
@@ -70,8 +72,6 @@ group :development do
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
   gem 'htmlbeautifier'
-  gem 'faker'
-
 end
 
 group :test do

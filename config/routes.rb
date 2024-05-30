@@ -18,4 +18,5 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[create update]
   end
   resources :dashboards, only: [:index]
+  resources :bookings, only: [:update]
 end

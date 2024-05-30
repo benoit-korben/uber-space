@@ -25,11 +25,11 @@ class SpaceshipsController < ApplicationController
     end
   end
 
+private
+
   def set_spaceship
     @spaceship = Spaceship.find(params[:id])
   end
-
-  private
 
   def spaceship_params
     params.require(:spaceship).permit(:name, :fuel, :number_of_places, :price_per_day, :description, :is_available, :main_image, secondary_images: [])
