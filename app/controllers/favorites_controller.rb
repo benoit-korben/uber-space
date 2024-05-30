@@ -8,6 +8,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
+    raise
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
     redirect_to spaceship_path(@favorite.spaceship)
