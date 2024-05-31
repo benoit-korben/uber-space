@@ -1,5 +1,7 @@
 <div class="col-6 d-flex booking-card align-items-center my-2">
-  <%= cl_image_tag(booking.spaceship.main_image.key)%>
+  <%= link_to spaceship_path(booking.spaceship) do %>
+    <%= cl_image_tag(booking.spaceship.main_image.key)%>
+  <% end %>
   <div class="d-flex flex-column px-4">
     <em><%= booking.spaceship.name %></em>
     <p><%=booking.start_date %></p>

@@ -20,8 +20,7 @@ description = [
   "Embrace minimalist living in this compact spaceship designed for efficiency and sustainability. This tiny home comes with all the essentials, including a composting toilet, a solar-powered shower, and a hydroponic garden where you can grow your own space veggies. Warning: May experience mild claustrophobia after extended stays (but the views are totally worth it)."
 ]
 
-email = [ "killian@botsford.test","benoit@botsford.test","ismael@botsford.test","matt@botsford.test","matt@botsford.test","matt@botsford.test","matt@botsford.test","matt@botsford.test","matt@botsford.test","matt@botsford.test"
-]
+email = [ "killian@botsford.test","benoit@botsford.test","ismael@botsford.test"]
 
 booking_messages = [
   "Need ship. Four tentacles.",
@@ -158,7 +157,7 @@ photo = ["https://images.unsplash.com/photo-1601892782633-675465fa7f3a",
 "https://plus.unsplash.com/premium_photo-1676795460328-e02ee1b42b4c"
 ]
 
-10.times.each_with_index do |_, index|
+3.times.each_with_index do |_, index|
   User.new(name: Faker::Name.first_name, email: email[index], password: "azerty").save
 end
 
@@ -191,3 +190,5 @@ end
   message: booking_messages[index]
 ).save
 end
+
+User.new(name: Matt, email: "matt@botsford.test", password: "azerty").save
