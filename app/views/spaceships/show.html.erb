@@ -1,15 +1,17 @@
 <div class="d-flex justify-content-between align-items-center">
   <h1 class="my-5"><%= @spaceship.name %></h1>
-  <% if current_user.favorites.exists?(spaceship: @spaceship) %>
-    <%= form_with(url: spaceship_favorite_path(@spaceship), method: :delete) do |f| %>
-      <%= f.button type: :submit, class: "btn btn-link" do %>
-        <i class="fa-solid fa-heart favorite"></i>
+  <% if current_user != nil %>
+    <% if current_user.favorites.exists?(spaceship: @spaceship) %>
+      <%= form_with(url: spaceship_favorite_path(@spaceship), method: :delete) do |f| %>
+        <%= f.button type: :submit, class: "btn btn-link" do %>
+          <i class="fa-solid fa-heart favorite"></i>
+        <% end %>
       <% end %>
-    <% end %>
-  <% else %>
-    <%= form_with(url: spaceship_favorites_path(@spaceship), method: :post) do |f| %>
-      <%= f.button type: :submit, class: "btn btn-link" do %>
-        <i class="fa-regular fa-heart favorite"></i>
+    <% else %>
+      <%= form_with(url: spaceship_favorites_path(@spaceship), method: :post) do |f| %>
+        <%= f.button type: :submit, class: "btn btn-link" do %>
+          <i class="fa-regular fa-heart favorite"></i>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
