@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   end
   resources :dashboards, only: [:index]
   resources :bookings, only: [:update]
+  resources :notifications, only: [:update]
 
 end
