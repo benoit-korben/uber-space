@@ -79,11 +79,32 @@
 }
 
 .booking-card {
+  &:hover img {
+    transform: scale(1.05);
+  }
+
   img {
+    transition: transform .6s ease;
     height: 200px;
   }
-}
 
+  // .pending, .booked, .cancelled, .finished{
+  //   transition: all .6s ease;
+  // }
+  // &:hover .pending{
+  //   background: var(--bs-warning);
+  //   color:white;
+  // }
+  // &:hover .booked{
+  //   background: var(--bs-success);
+  // }
+  // &:hover .cancelled{
+  //   background: var(--bs-danger);
+  // }
+  // &:hover .finished{
+  //   background: var(--bs-success);
+  // }
+}
 
 .accordion-button:not(.collapsed),
 .accordion-button:focus {
