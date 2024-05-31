@@ -8,10 +8,6 @@ class Booking < ApplicationRecord
 
   has_many :notifications, dependent: :destroy
 
-  def create_notification(message)
-    self.notifications.create(message: message, read: false)
-  end
-
   def end_date_cannot_be_before_start_date
     if end_date.present? && start_date.present? && end_date < start_date
       errors.add(:end_date, "cannot be before start date")
