@@ -1,0 +1,40 @@
+.notification-container{
+  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-top: 2em;
+  .notification{
+    display: flex;
+    align-items: center;
+
+
+    .check, .uncheck {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 35px;
+      min-width: 35px;
+      color: #fff;
+      font-size: 20px;
+      border-radius: 50%;
+    }
+
+    .check{
+    }
+
+    .uncheck{
+      opacity: 0.7;
+      cursor:pointer;
+      &:hover{
+        opacity: 1;
+      }
+    }
+  }
+  .unread{
+    background: var(--bs-gray-400);
+  }
+
+
+
+
+
+}

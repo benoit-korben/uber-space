@@ -137,6 +137,10 @@
   background-color: var(--bs-danger);
 }
 
+.accordion-button.collapsed.booked-bookings::after {
+  background-color: blue;
+}
+
 .pending {
   border: solid 1px var(--bs-warning);
 }

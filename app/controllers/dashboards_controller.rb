@@ -3,6 +3,7 @@ class DashboardsController < ApplicationController
 
   def index
     if current_user
+      @notifications = Notification.joins(:booking).where(bookings: { user_id: current_user.id }).order(created_at: :desc)
       @bookings = Booking.where(user_id: current_user.id).in_order_of(:status, Booking.statuses.keys)
       @seller_bookings = Booking.joins(:spaceship).where(spaceships: { user_id: current_user.id }).in_order_of(:status, Booking.statuses.keys)
       @pending_bookings = @seller_bookings.where(status: "pending")

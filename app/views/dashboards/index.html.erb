@@ -60,7 +60,30 @@
       </div>
     </div>
     <div class="tab-pane fade" id="nav-notifications" role="tabpanel" aria-labelledby="nav-notifications">
-      <h2>Notifications</h2>
+      <h2 clss="mb-5">Notifications</h2>
+
+      <div class="notification-container rounded" data-controller="notifications">
+        <% if @notifications.empty? %>
+          <p>You don't have any notifications yet.</p>
+        <% else %>
+        <% @notifications.each do |notification| %>
+        <div class="notification <%= notification.read? ? 'read' : 'unread' %> p-3 w-100" data-notifications-target="toast">
+          <i class="fas fa-bell me-3 <%= notification.read? ? 'check' : 'uncheck' %> bg-info" data-notifications-target="icon" data-action="click->notifications#markAsRead"></i>
+          <p>Your booking has been <%= notification.booking.status %></p>
+        </div>
+        <% end %>
+        <% end %>
+         <%# <div class="notification read p-3 w-100" data-notifications-target="toast">
+          <i class="fas fa-check me-3 check bg-success" data-notifications-target="icon"></i>
+          <p>Your booking has been cancelled</p>
+        </div> %>
+
+
+      </div>
+
+
+
+
     </div>
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile">
       <h1>Seller Profile</h1>
@@ -68,8 +91,8 @@
         <div class="accordion accordion-flush" id="accordionFlush">
           <div class="accordion-item rounded-3 border-0 shadow mb-2">
             <h3 class="accordion-header">
-              <button class="rounded accordion-button border-bottom fw-semibold pending-bookings <%= !@pending_bookings.empty? ? '' : 'collapsed' %>" type="button" data-bs-toggle="collapse" data-bs-target="#pending-bookings" aria-expanded="false" aria-controls="pending-bookings">
-                Pending bookings
+              <button class="text-black rounded accordion-button border-bottom fw-semibold pending-bookings <%= !@pending_bookings.empty? ? '' : 'collapsed' %>" type="button" data-bs-toggle="collapse" data-bs-target="#pending-bookings" aria-expanded="false" aria-controls="pending-bookings">
+                Pending
               </button>
             </h3>
             <div id="pending-bookings" class="accordion-collapse collapse <%= !@pending_bookings.empty? ? 'show' : '' %>" data-bs-parent="#accordionFlush">
@@ -80,8 +103,8 @@
         <div class="accordion accordion-flush" id="accordionFlush">
           <div class="accordion-item rounded-3 border-0 shadow mb-2">
             <h3 class="accordion-header">
-              <button class="rounded accordion-button border-bottom collapsed fw-semibold booked-bookings" type="button" data-bs-toggle="collapse" data-bs-target="#booked-bookings" aria-expanded="false" aria-controls="booked-bookings">
-                Booked bookings
+              <button class="text-black rounded accordion-button border-bottom collapsed fw-semibold booked-bookings" type="button" data-bs-toggle="collapse" data-bs-target="#booked-bookings" aria-expanded="false" aria-controls="booked-bookings">
+                Booked
               </button>
             </h3>
             <div id="booked-bookings" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
@@ -92,8 +115,8 @@
         <div class="accordion accordion-flush" id="accordionFlush">
           <div class="accordion-item rounded-3 border-0 shadow mb-2">
             <h3 class="accordion-header">
-              <button class="rounded accordion-button border-bottom collapsed fw-semibold confirmed-bookings" type="button" data-bs-toggle="collapse" data-bs-target="#confirmed-bookings" aria-expanded="false" aria-controls="confirmed-bookings">
-                Completed bookings
+              <button class="text-black rounded accordion-button border-bottom collapsed fw-semibold confirmed-bookings" type="button" data-bs-toggle="collapse" data-bs-target="#confirmed-bookings" aria-expanded="false" aria-controls="confirmed-bookings">
+                Completed
               </button>
             </h3>
             <div id="confirmed-bookings" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
@@ -104,8 +127,8 @@
         <div class="accordion accordion-flush" id="accordionFlush">
           <div class="accordion-item rounded-3 border-0 shadow mb-2">
             <h3 class="accordion-header">
-              <button class="rounded accordion-button border-bottom collapsed fw-semibold cancelled-bookings" type="button" data-bs-toggle="collapse" data-bs-target="#cancelled-bookings" aria-expanded="false" aria-controls="cancelled-bookings">
-                Cancelled bookings
+              <button class="text-black rounded accordion-button border-bottom collapsed fw-semibold cancelled-bookings" type="button" data-bs-toggle="collapse" data-bs-target="#cancelled-bookings" aria-expanded="false" aria-controls="cancelled-bookings">
+                Cancelled
               </button>
             </h3>
             <div id="cancelled-bookings" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
