@@ -27,7 +27,7 @@
             <%= render "booking_customer", booking: booking if booking.status == "pending" || booking.status == "booked"%>
           <% end %>
         </div>
-        <h3 class="my-4">Previous rentals</h3>
+        <h3 class="my-4">Previous bookings</h3>
         <div class="row">
           <% @bookings.each do |booking|  %>
             <%= render "previous_booking_customer", booking: booking if booking.status == "finished"%>

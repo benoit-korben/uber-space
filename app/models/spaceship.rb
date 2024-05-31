@@ -4,7 +4,7 @@ class Spaceship < ApplicationRecord
 
   has_one_attached :main_image
   has_many_attached :secondary_images
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
 
   validate :validate_secondary_images_count
 
