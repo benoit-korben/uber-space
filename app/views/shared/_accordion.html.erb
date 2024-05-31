@@ -1,6 +1,6 @@
 <div class="accordion-body row flex-wrap justify-content-between">
   <% bookings.each do |booking|  %>
-    <div class="card mb-2 col-5 <%= booking.status %> seller-card">
+    <div class="card mb-2 border border-0 col-5 <%= booking.status %> seller-card">
       <div class="mb-2">
         <div class="d-flex spaceship-card align-items-center my-3 favorites-card">
           <%= link_to spaceship_path(booking.spaceship) do %>
@@ -16,7 +16,7 @@
           <%= link_to button[:text], booking_path(booking, status: button[:status]), data: {turbo_method: :patch}, class: button[:classes] %>
         <% end %>
       </div>
-      
+
     </div>
   <% end %>
 </div>
