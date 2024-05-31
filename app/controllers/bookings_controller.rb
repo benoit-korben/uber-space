@@ -12,10 +12,15 @@ class BookingsController < ApplicationController
     #"action"=>"update", "booking"=>{"id"=>"901"}} permitted: false>
     # debugger
     @booking.status = Booking.statuses[params[:status]]
-    @booking.save
-    respond_to do |format|
-      format.html { redirect_to dashboards_path }
-      format.json # Follows the classic Rails flow and look for a create.json view
+
+    if @booking.save
+      @notification = Notification.create(booking: @booking, read:false)
+      respond_to do |format|
+        format.html { redirect_to dashboards_path }
+        format.json # Follows the classic Rails flow and look for a create.json view
+      end
+    else
+      render template: "dashboards/index", status: :unprocessable_entity
     end
   end
 
