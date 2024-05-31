@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_30_153135) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_31_095948) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,6 +64,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_30_153135) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "booking_id", null: false
+    t.string "message"
+    t.boolean "read"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_notifications_on_booking_id"
+  end
+
   create_table "spaceships", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -96,5 +105,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_30_153135) do
   add_foreign_key "bookings", "users"
   add_foreign_key "favorites", "spaceships"
   add_foreign_key "favorites", "users"
+  add_foreign_key "notifications", "bookings"
   add_foreign_key "spaceships", "users"
 end
