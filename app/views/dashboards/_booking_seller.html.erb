@@ -10,7 +10,6 @@
         <h6 class="card-text">To: <%=booking.end_date %></h6>
         <h6 class="card-text"><%= booking.status.capitalize %></h6>
         <% booking.associated_buttons_status.each do |button| %>
-          <%# <%= link_to button[:text], booking_path(booking), data: {turbo_method: :patch, status: button[:status]}, class: button[:classes] %>
           <button data-action="click->booking#update", data-status="<%= button[:status] %>" class="<%= button[:classes]%>"><%= button[:text] %></button>
         <% end %>
       </div>
