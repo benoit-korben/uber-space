@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center">
   <h1 class="my-5"><%= @spaceship.name %></h1>
-  <% if current_user != nil %>
+  <% if current_user != nil && current_user != @spaceship.user %>
     <% if current_user.favorites.exists?(spaceship: @spaceship) %>
       <%= form_with(url: spaceship_favorite_path(@spaceship), method: :delete) do |f| %>
         <%= f.button type: :submit, class: "btn btn-link" do %>
