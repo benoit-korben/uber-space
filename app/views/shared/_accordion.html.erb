@@ -8,13 +8,12 @@
           <% end %>
           <div class="d-flex flex-column px-4">
             <em><%= booking.spaceship.name %></em>
-            <p><i class="fa-solid fa-circle-radiation"></i> <%= booking.spaceship.fuel %></p>
-            <p><i class="fas fa-users"></i> <%= booking.spaceship.number_of_places %></p>
-            <p><i class="fa-solid fa-euro-sign"></i> <%= booking.spaceship.price_per_day %>€/day</p>
+            <p><%= booking.start_date.strftime("%d/%m/%Y") %></p>
+            <p><%= booking.end_date.strftime("%d/%m/%Y") %></p>
           </div>
         </div>
         <% booking.associated_buttons_status.each do |button| %>
-          <%= link_to button[:text], dashboards_path, data: {turbo_method: :patch}, class: button[:classes] %>
+          <%= link_to button[:text], booking_path(booking, status: button[:status]), data: {turbo_method: :patch}, class: button[:classes] %>
         <% end %>
       </div>
       

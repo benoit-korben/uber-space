@@ -13,8 +13,8 @@ class BookingsController < ApplicationController
     # debugger
     @booking.status = Booking.statuses[params[:status]]
 
-    if @booking.save
-      @notification = Notification.create(booking: @booking, read:false)
+    if @booking.save!
+      @notification = Notification.create!(booking: @booking, read: false)
       respond_to do |format|
         format.html { redirect_to dashboards_path }
         format.json # Follows the classic Rails flow and look for a create.json view

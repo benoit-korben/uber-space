@@ -80,6 +80,18 @@
         <div class="accordion accordion-flush" id="accordionFlush">
           <div class="accordion-item rounded-3 border-0 shadow mb-2">
             <h3 class="accordion-header">
+              <button class="rounded accordion-button border-bottom collapsed fw-semibold booked-bookings" type="button" data-bs-toggle="collapse" data-bs-target="#booked-bookings" aria-expanded="false" aria-controls="booked-bookings">
+                Booked bookings
+              </button>
+            </h3>
+            <div id="booked-bookings" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+              <%= render "shared/accordion", bookings:@booked_bookings %>
+            </div>
+          </div>
+        </div>
+        <div class="accordion accordion-flush" id="accordionFlush">
+          <div class="accordion-item rounded-3 border-0 shadow mb-2">
+            <h3 class="accordion-header">
               <button class="rounded accordion-button border-bottom collapsed fw-semibold confirmed-bookings" type="button" data-bs-toggle="collapse" data-bs-target="#confirmed-bookings" aria-expanded="false" aria-controls="confirmed-bookings">
                 Completed bookings
               </button>
