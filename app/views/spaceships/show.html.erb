@@ -36,15 +36,15 @@
   <div class="row justify-content-start align-items-center">
     <div class="col-1 text-center">
           <i class="fa-solid fa-circle-radiation"></i>
-          <p>Uranium</p>
+          <p><%= @spaceship.fuel %></p>
         </div>
         <div class="col-1 text-center">
           <i class="fa-solid fa-users"></i>
-          <p class="">26</p>
+          <p><%= @spaceship.number_of_places %></p>
         </div>
         <div class="col-1 text-center">
-          <i class="fa-solid fa-dollar-sign"></i>
-          <p class="">3090/day</p>
+          <i class="fa-solid fa-euro-sign"></i>
+          <p><%= @spaceship.price_per_day %>/day</p>
         </div>
     </div>
 
