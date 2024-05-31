@@ -19,7 +19,7 @@
   transition: all 0.5s ease;
   height: 70vh;
 
-  a{
+  a {
     text-decoration: none;
   }
 
@@ -58,7 +58,8 @@
   grid-row: 1 / 12;
 }
 
-.spaceship-card, .booking-card {
+.spaceship-card,
+.booking-card {
   img {
     width: auto;
     aspect-ratio: 1 / 1;
@@ -71,14 +72,14 @@
   }
 }
 
-.spaceship-card{
-  img{
+.spaceship-card {
+  img {
     height: 100px;
   }
 }
 
-.booking-card{
-  img{
+.booking-card {
+  img {
     height: 200px;
   }
 }
@@ -91,12 +92,14 @@
   box-shadow: none;
   background-color: transparent;
 }
+
 .accordion-button::after {
   width: 11px;
   height: 11px;
   border-radius: 100%;
   background-image: none !important;
 }
+
 .accordion-button::after {
   background-color: var(--bs-gray-300);
 }
@@ -127,4 +130,8 @@
 
 .cancelled {
   border: solid 1px var(--bs-danger);
+}
+
+.seller-card {
+  border-radius: 15px;
 }
