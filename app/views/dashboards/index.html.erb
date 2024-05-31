@@ -63,12 +63,16 @@
       <h2 clss="mb-5">Notifications</h2>
 
       <div class="notification-container rounded" data-controller="notifications">
-
-        <div class="notification unread p-3 w-100" data-notifications-target="toast">
-          <i class="fas fa-bell me-3 uncheck bg-info" data-notifications-target="icon" data-action="click->notifications#markAsRead"></i>
-          <p>The spaceship you booked has been confirmed</p>
+        <% if @notifications.empty? %>
+          <p>You don't have any notifications yet.</p>
+        <% else %>
+        <% @notifications.each do |notification| %>
+        <div class="notification <%= notification.read? ? 'read' : 'unread' %> p-3 w-100" data-notifications-target="toast">
+          <i class="fas fa-bell me-3 <%= notification.read? ? 'check' : 'uncheck' %> bg-info" data-notifications-target="icon" data-action="click->notifications#markAsRead"></i>
+          <p>Your booking has been <%= notification.booking.status %></p>
         </div>
-
+        <% end %>
+        <% end %>
          <%# <div class="notification read p-3 w-100" data-notifications-target="toast">
           <i class="fas fa-check me-3 check bg-success" data-notifications-target="icon"></i>
           <p>Your booking has been cancelled</p>

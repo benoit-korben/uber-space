@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :spaceships
   has_one_attached :photo
   has_many :favorites
+  has_many :notifications
 end
