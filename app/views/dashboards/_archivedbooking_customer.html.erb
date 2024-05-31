@@ -1,0 +1,19 @@
+<div data-controller="booking", data-booking-id-value="<%= booking.id %>" class="card mb-3 col-6 <%= booking.status %>">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <%= cl_image_tag(booking.spaceship.main_image.key, width: 200, heigth: 100)%>
+    </div>
+    <div class="col-md-8 p-3">
+      <div class="card-body">
+        <h2 class="card-title"><%= booking.spaceship.name %></h2>
+        <h6 class="card-text">From: <%=booking.start_date %></h6>
+        <h6 class="card-text">To: <%=booking.end_date %></h6>
+        <h6 class="card-text"><%= booking.status.capitalize %></h6>
+        <% booking.associated_buttons_status.each do |button| %>
+          <%# <%= link_to button[:text], booking_path(booking), data: {turbo_method: :patch, status: button[:status]}, class: button[:classes] %>
+          <button data-action="click->booking#update", data-status="<%= button[:status] %>" class="<%= button[:classes]%>"><%= button[:text] %></button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
