@@ -101,32 +101,25 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="d-flex justify-content-between align-items-center my-4">
-          <h2>My spaceships</h2>
-          <%= link_to "Add a spaceship", new_spaceship_path, class: "btn btn-primary" %>
-        </div>
-        <% @spaceships.each do |spaceship| %>
-          <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class="card mb-4 shadow-sm rounded">
-              <%= cl_image_tag spaceship.main_image.key, class: "card-img-top" %>
-              <div class="card-body">
-                <h5 class="card-title">
-                  <%= spaceship.name %>
-                </h5>
-                <div class="d-flex justify-content-between mt-3">
-                  <h6><i class="fa-solid fa-radiation"></i> <%= spaceship.fuel %></h6>
-                  <h6><i class="fa-solid fa-user-group"></i> <%= spaceship.number_of_places %></h6>
-                  <h6><i class="fa-regular fa-gem"></i> <%= spaceship.price_per_day %>$ / day</h6>
-                </div>
-                <a href="#" class="btn btn-success mt-4">View</a>
-                <a href="#" class="btn btn-info mt-4">Edit</a>
-                <a href="#" class="btn btn-danger mt-4">Delete</a>
-              </div>
-            </div>
+        <div class="row">
+          <div class="d-flex justify-content-between align-items-center my-4">
+            <h2>My spaceships</h2>
+            <%= link_to "Add a spaceship", new_spaceship_path, class: "btn btn-primary" %>
           </div>
-        <% end %>
+          <% @spaceships.each do |spaceship| %>
+            <div class="col-6 d-flex spaceship-card align-items-center my-3 favorites-card">
+                <%= link_to spaceship_path(spaceship) do %>
+                  <%= cl_image_tag spaceship.main_image.key %>
+                <% end %>
+                <div class="d-flex flex-column px-4">
+                  <em><%= spaceship.name %></em>
+                  <p><i class="fa-solid fa-circle-radiation"></i> <%= spaceship.fuel %></p>
+                  <p><i class="fas fa-users"></i> <%= spaceship.number_of_places %></p>
+                  <p><i class="fa-solid fa-euro-sign"></i> <%= spaceship.price_per_day %>€/day</p>
+                </div>
+             </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

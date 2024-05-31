@@ -1,22 +1,23 @@
-<div class="accordion-body">
+<div class="accordion-body row flex-wrap justify-content-between">
   <% bookings.each do |booking|  %>
-    <div class="card mb-3 col-6 <%= booking.status %>">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <%= cl_image_tag(booking.spaceship.main_image.key, width: 200, heigth: 100)%>
-        </div>
-        <div class="col-md-8 p-3">
-          <div class="card-body">
-            <h2 class="card-title"><%= booking.spaceship.name %></h2>
-            <h6 class="card-text">From: <%=booking.start_date %></h6>
-            <h6 class="card-text">To: <%=booking.end_date %></h6>
-            <h6 class="card-text"><%= booking.status.capitalize %></h6>
-            <% booking.associated_buttons_status.each do |button| %>
-              <%= link_to button[:text], dashboards_path, data: {turbo_method: :patch}, class: button[:classes] %>
-            <% end %>
+    <div class="card mb-2 col-5 <%= booking.status %> seller-card">
+      <div class="mb-2">
+        <div class="d-flex spaceship-card align-items-center my-3 favorites-card">
+          <%= link_to spaceship_path(booking.spaceship) do %>
+            <%= cl_image_tag booking.spaceship.main_image.key %>
+          <% end %>
+          <div class="d-flex flex-column px-4">
+            <em><%= booking.spaceship.name %></em>
+            <p><i class="fa-solid fa-circle-radiation"></i> <%= booking.spaceship.fuel %></p>
+            <p><i class="fas fa-users"></i> <%= booking.spaceship.number_of_places %></p>
+            <p><i class="fa-solid fa-euro-sign"></i> <%= booking.spaceship.price_per_day %>€/day</p>
           </div>
         </div>
+        <% booking.associated_buttons_status.each do |button| %>
+          <%= link_to button[:text], dashboards_path, data: {turbo_method: :patch}, class: button[:classes] %>
+        <% end %>
       </div>
+      
     </div>
   <% end %>
 </div>
