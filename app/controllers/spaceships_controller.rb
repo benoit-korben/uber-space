@@ -9,6 +9,11 @@ class SpaceshipsController < ApplicationController
   def show
     @booking = Booking.new
     @favorite = Favorite.new
+    current_user.favorites.each do |favorite|
+      if favorite.spaceship == @spaceship
+        @favorite = favorite
+      end
+    end
   end
 
   def new
